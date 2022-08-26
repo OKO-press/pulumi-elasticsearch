@@ -1,0 +1,1093 @@
+{
+    "name": "elasticsearch",
+    "description": "A Pulumi package for creating and managing elasticsearch cloud resources.",
+    "keywords": [
+        "pulumi",
+        "elasticsearch",
+        "category/cloud"
+    ],
+    "homepage": "https://www.pulumi.com",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`elasticsearch` Terraform Provider](https://github.com/OKO-press/terraform-provider-elasticsearch).",
+    "repository": "https://github.com/OKO-press/pulumi-elasticsearch",
+    "publisher": "Pulumi",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "language": {
+        "csharp": {
+            "compatibility": "tfbridge20",
+            "namespaces": null,
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
+            "rootNamespace": "OKO.press"
+        },
+        "go": {
+            "generateExtraInputTypes": true,
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/OKO-press/pulumi-elasticsearch/sdk/go/elasticsearch"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing elasticsearch cloud resources.",
+            "packageName": "@oko-press/pulumi-elasticsearch",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/OKO-press/terraform-provider-elasticsearch)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-elasticsearch` repo](https://github.com/OKO-press/pulumi-elasticsearch/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-elasticsearch` repo](https://github.com/OKO-press/terraform-provider-elasticsearch/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "packageName": "oko-press_pulumi-elasticsearch",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/OKO-press/terraform-provider-elasticsearch)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-elasticsearch` repo](https://github.com/OKO-press/pulumi-elasticsearch/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-elasticsearch` repo](https://github.com/OKO-press/terraform-provider-elasticsearch/issues).",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    },
+    "config": {
+        "variables": {
+            "awsAccessKey": {
+                "type": "string",
+                "description": "The access key for use with AWS Elasticsearch Service domains\n"
+            },
+            "awsAssumeRoleArn": {
+                "type": "string",
+                "description": "Amazon Resource Name of an IAM Role to assume prior to making AWS API calls.\n"
+            },
+            "awsProfile": {
+                "type": "string",
+                "description": "The AWS profile for use with AWS Elasticsearch Service domains\n"
+            },
+            "awsRegion": {
+                "type": "string",
+                "description": "The AWS region for use in signing of AWS elasticsearch requests. Must be specified in order to use AWS URL signing with\nAWS ElasticSearch endpoint exposed on a custom DNS domain.\n"
+            },
+            "awsSecretKey": {
+                "type": "string",
+                "description": "The secret key for use with AWS Elasticsearch Service domains\n"
+            },
+            "awsSignatureService": {
+                "type": "string",
+                "description": "AWS service name used in the credential scope of signed requests to ElasticSearch.\n"
+            },
+            "awsToken": {
+                "type": "string",
+                "description": "The session token for use with AWS Elasticsearch Service domains\n"
+            },
+            "cacertFile": {
+                "type": "string",
+                "description": "A Custom CA certificate\n"
+            },
+            "clientCertPath": {
+                "type": "string",
+                "description": "A X509 certificate to connect to elasticsearch\n"
+            },
+            "clientKeyPath": {
+                "type": "string",
+                "description": "A X509 key to connect to elasticsearch\n"
+            },
+            "elasticsearchVersion": {
+                "type": "string",
+                "description": "ElasticSearch Version\n"
+            },
+            "healthcheck": {
+                "type": "boolean",
+                "description": "Set the client healthcheck option for the elastic client. Healthchecking is designed for direct access to the cluster.\n"
+            },
+            "hostOverride": {
+                "type": "string",
+                "description": "If provided, sets the 'Host' header of requests and the 'ServerName' for certificate validation to this value. See the\ndocumentation on connecting to Elasticsearch via an SSH tunnel.\n"
+            },
+            "insecure": {
+                "type": "boolean",
+                "description": "Disable SSL verification of API calls\n"
+            },
+            "kibanaUrl": {
+                "type": "string",
+                "description": "URL to reach the Kibana API\n"
+            },
+            "password": {
+                "type": "string",
+                "description": "Password to use to connect to elasticsearch using basic auth\n"
+            },
+            "signAwsRequests": {
+                "type": "boolean",
+                "description": "Enable signing of AWS elasticsearch requests. The `url` must refer to AWS ES domain (`*.\u003cregion\u003e.es.amazonaws.com`), or\n`aws_region` must be specified explicitly.\n"
+            },
+            "sniff": {
+                "type": "boolean",
+                "description": "Set the node sniffing option for the elastic client. Client won't work with sniffing if nodes are not routable.\n"
+            },
+            "token": {
+                "type": "string",
+                "description": "A bearer token or ApiKey for an Authorization header, e.g. Active Directory API key.\n"
+            },
+            "tokenName": {
+                "type": "string",
+                "description": "The type of token, usually ApiKey or Bearer\n"
+            },
+            "url": {
+                "type": "string",
+                "description": "Elasticsearch URL\n"
+            },
+            "username": {
+                "type": "string",
+                "description": "Username to use to connect to elasticsearch using basic auth\n"
+            },
+            "versionPingTimeout": {
+                "type": "integer",
+                "description": "Version ping timeout in seconds\n"
+            }
+        },
+        "defaults": [
+            "url"
+        ]
+    },
+    "provider": {
+        "description": "The provider type for the elasticsearch package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "awsAccessKey": {
+                "type": "string",
+                "description": "The access key for use with AWS Elasticsearch Service domains\n"
+            },
+            "awsAssumeRoleArn": {
+                "type": "string",
+                "description": "Amazon Resource Name of an IAM Role to assume prior to making AWS API calls.\n"
+            },
+            "awsProfile": {
+                "type": "string",
+                "description": "The AWS profile for use with AWS Elasticsearch Service domains\n"
+            },
+            "awsRegion": {
+                "type": "string",
+                "description": "The AWS region for use in signing of AWS elasticsearch requests. Must be specified in order to use AWS URL signing with\nAWS ElasticSearch endpoint exposed on a custom DNS domain.\n"
+            },
+            "awsSecretKey": {
+                "type": "string",
+                "description": "The secret key for use with AWS Elasticsearch Service domains\n"
+            },
+            "awsSignatureService": {
+                "type": "string",
+                "description": "AWS service name used in the credential scope of signed requests to ElasticSearch.\n"
+            },
+            "awsToken": {
+                "type": "string",
+                "description": "The session token for use with AWS Elasticsearch Service domains\n"
+            },
+            "cacertFile": {
+                "type": "string",
+                "description": "A Custom CA certificate\n"
+            },
+            "clientCertPath": {
+                "type": "string",
+                "description": "A X509 certificate to connect to elasticsearch\n"
+            },
+            "clientKeyPath": {
+                "type": "string",
+                "description": "A X509 key to connect to elasticsearch\n"
+            },
+            "elasticsearchVersion": {
+                "type": "string",
+                "description": "ElasticSearch Version\n"
+            },
+            "healthcheck": {
+                "type": "boolean",
+                "description": "Set the client healthcheck option for the elastic client. Healthchecking is designed for direct access to the cluster.\n"
+            },
+            "hostOverride": {
+                "type": "string",
+                "description": "If provided, sets the 'Host' header of requests and the 'ServerName' for certificate validation to this value. See the\ndocumentation on connecting to Elasticsearch via an SSH tunnel.\n"
+            },
+            "insecure": {
+                "type": "boolean",
+                "description": "Disable SSL verification of API calls\n"
+            },
+            "kibanaUrl": {
+                "type": "string",
+                "description": "URL to reach the Kibana API\n"
+            },
+            "password": {
+                "type": "string",
+                "description": "Password to use to connect to elasticsearch using basic auth\n"
+            },
+            "signAwsRequests": {
+                "type": "boolean",
+                "description": "Enable signing of AWS elasticsearch requests. The `url` must refer to AWS ES domain (`*.\u003cregion\u003e.es.amazonaws.com`), or\n`aws_region` must be specified explicitly.\n"
+            },
+            "sniff": {
+                "type": "boolean",
+                "description": "Set the node sniffing option for the elastic client. Client won't work with sniffing if nodes are not routable.\n"
+            },
+            "token": {
+                "type": "string",
+                "description": "A bearer token or ApiKey for an Authorization header, e.g. Active Directory API key.\n"
+            },
+            "tokenName": {
+                "type": "string",
+                "description": "The type of token, usually ApiKey or Bearer\n"
+            },
+            "url": {
+                "type": "string",
+                "description": "Elasticsearch URL\n"
+            },
+            "username": {
+                "type": "string",
+                "description": "Username to use to connect to elasticsearch using basic auth\n"
+            },
+            "versionPingTimeout": {
+                "type": "integer",
+                "description": "Version ping timeout in seconds\n"
+            }
+        },
+        "required": [
+            "url"
+        ],
+        "inputProperties": {
+            "awsAccessKey": {
+                "type": "string",
+                "description": "The access key for use with AWS Elasticsearch Service domains\n"
+            },
+            "awsAssumeRoleArn": {
+                "type": "string",
+                "description": "Amazon Resource Name of an IAM Role to assume prior to making AWS API calls.\n"
+            },
+            "awsProfile": {
+                "type": "string",
+                "description": "The AWS profile for use with AWS Elasticsearch Service domains\n"
+            },
+            "awsRegion": {
+                "type": "string",
+                "description": "The AWS region for use in signing of AWS elasticsearch requests. Must be specified in order to use AWS URL signing with\nAWS ElasticSearch endpoint exposed on a custom DNS domain.\n"
+            },
+            "awsSecretKey": {
+                "type": "string",
+                "description": "The secret key for use with AWS Elasticsearch Service domains\n"
+            },
+            "awsSignatureService": {
+                "type": "string",
+                "description": "AWS service name used in the credential scope of signed requests to ElasticSearch.\n"
+            },
+            "awsToken": {
+                "type": "string",
+                "description": "The session token for use with AWS Elasticsearch Service domains\n"
+            },
+            "cacertFile": {
+                "type": "string",
+                "description": "A Custom CA certificate\n"
+            },
+            "clientCertPath": {
+                "type": "string",
+                "description": "A X509 certificate to connect to elasticsearch\n"
+            },
+            "clientKeyPath": {
+                "type": "string",
+                "description": "A X509 key to connect to elasticsearch\n"
+            },
+            "elasticsearchVersion": {
+                "type": "string",
+                "description": "ElasticSearch Version\n"
+            },
+            "healthcheck": {
+                "type": "boolean",
+                "description": "Set the client healthcheck option for the elastic client. Healthchecking is designed for direct access to the cluster.\n"
+            },
+            "hostOverride": {
+                "type": "string",
+                "description": "If provided, sets the 'Host' header of requests and the 'ServerName' for certificate validation to this value. See the\ndocumentation on connecting to Elasticsearch via an SSH tunnel.\n"
+            },
+            "insecure": {
+                "type": "boolean",
+                "description": "Disable SSL verification of API calls\n"
+            },
+            "kibanaUrl": {
+                "type": "string",
+                "description": "URL to reach the Kibana API\n"
+            },
+            "password": {
+                "type": "string",
+                "description": "Password to use to connect to elasticsearch using basic auth\n"
+            },
+            "signAwsRequests": {
+                "type": "boolean",
+                "description": "Enable signing of AWS elasticsearch requests. The `url` must refer to AWS ES domain (`*.\u003cregion\u003e.es.amazonaws.com`), or\n`aws_region` must be specified explicitly.\n"
+            },
+            "sniff": {
+                "type": "boolean",
+                "description": "Set the node sniffing option for the elastic client. Client won't work with sniffing if nodes are not routable.\n"
+            },
+            "token": {
+                "type": "string",
+                "description": "A bearer token or ApiKey for an Authorization header, e.g. Active Directory API key.\n"
+            },
+            "tokenName": {
+                "type": "string",
+                "description": "The type of token, usually ApiKey or Bearer\n"
+            },
+            "url": {
+                "type": "string",
+                "description": "Elasticsearch URL\n"
+            },
+            "username": {
+                "type": "string",
+                "description": "Username to use to connect to elasticsearch using basic auth\n"
+            },
+            "versionPingTimeout": {
+                "type": "integer",
+                "description": "Version ping timeout in seconds\n"
+            }
+        },
+        "requiredInputs": [
+            "url"
+        ]
+    },
+    "resources": {
+        "elasticsearch:index/index:Index": {
+            "properties": {
+                "aliases": {
+                    "type": "string",
+                    "description": "A JSON string describing a set of aliases. The index aliases API allows aliasing an index with a name, with all APIs\nautomatically converting the alias name to the actual index name. An alias can also be mapped to more than one index,\nand when specifying it, the alias will automatically expand to the aliased indices.\n"
+                },
+                "analysisAnalyzer": {
+                    "type": "string",
+                    "description": "A JSON string describing the analyzers applied to the index.\n"
+                },
+                "analysisFilter": {
+                    "type": "string",
+                    "description": "A JSON string describing the filters applied to the index.\n"
+                },
+                "analysisNormalizer": {
+                    "type": "string",
+                    "description": "A JSON string describing the normalizers applied to the index.\n"
+                },
+                "analysisTokenizer": {
+                    "type": "string",
+                    "description": "A JSON string describing the tokenizers applied to the index.\n"
+                },
+                "analyzeMaxTokenCount": {
+                    "type": "string",
+                    "description": "The maximum number of tokens that can be produced using _analyze API. A stringified number.\n"
+                },
+                "autoExpandReplicas": {
+                    "type": "string",
+                    "description": "Set the number of replicas to the node count in the cluster. Set to a dash delimited lower and upper bound (e.g. 0-5) or\nuse all for the upper bound (e.g. 0-all)\n"
+                },
+                "blocksMetadata": {
+                    "type": "boolean",
+                    "description": "Set to `true` to disable index metadata reads and writes.\n"
+                },
+                "blocksRead": {
+                    "type": "boolean",
+                    "description": "Set to `true` to disable read operations against the index.\n"
+                },
+                "blocksReadOnly": {
+                    "type": "boolean",
+                    "description": "Set to `true` to make the index and index metadata read only, `false` to allow writes and metadata changes.\n"
+                },
+                "blocksReadOnlyAllowDelete": {
+                    "type": "boolean",
+                    "description": "Identical to `index.blocks.read_only` but allows deleting the index to free up resources.\n"
+                },
+                "blocksWrite": {
+                    "type": "boolean",
+                    "description": "Set to `true` to disable data write operations against the index. This setting does not affect metadata.\n"
+                },
+                "codec": {
+                    "type": "string",
+                    "description": "The `default` value compresses stored data with LZ4 compression, but this can be set to `best_compression` which uses\nDEFLATE for a higher compression ratio. This can be set only on creation.\n"
+                },
+                "defaultPipeline": {
+                    "type": "string",
+                    "description": "The default ingest node pipeline for this index. Index requests will fail if the default pipeline is set and the\npipeline does not exist.\n"
+                },
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "A boolean that indicates that the index should be deleted even if it contains documents.\n"
+                },
+                "gcDeletes": {
+                    "type": "string",
+                    "description": "The length of time that a deleted document's version number remains available for further versioned operations.\n"
+                },
+                "highlightMaxAnalyzedOffset": {
+                    "type": "string",
+                    "description": "The maximum number of characters that will be analyzed for a highlight request. A stringified number.\n"
+                },
+                "includeTypeName": {
+                    "type": "string",
+                    "description": "A string that indicates if and what we should pass to include_type_name parameter. Set to `\"false\"` when trying to\ncreate an index on a v6 cluster without a doc type or set to `\"true\"` when trying to create an index on a v7 cluster\nwith a doc type. Since mapping updates are not currently supported, this applies only on index create.\n"
+                },
+                "indexingSlowlogLevel": {
+                    "type": "string",
+                    "description": "Set which logging level to use for the search slow log, can be: `warn`, `info`, `debug`, `trace`\n"
+                },
+                "indexingSlowlogSource": {
+                    "type": "string",
+                    "description": "Set the number of characters of the `_source` to include in the slowlog lines, `false` or `0` will skip logging the\nsource entirely and setting it to `true` will log the entire source regardless of size. The original `_source` is\nreformatted by default to make sure that it fits on a single log line.\n"
+                },
+                "indexingSlowlogThresholdIndexDebug": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches for indexing queries, in time units, e.g. `2s`\n"
+                },
+                "indexingSlowlogThresholdIndexInfo": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches for indexing queries, in time units, e.g. `5s`\n"
+                },
+                "indexingSlowlogThresholdIndexTrace": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches for indexing queries, in time units, e.g. `500ms`\n"
+                },
+                "indexingSlowlogThresholdIndexWarn": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches for indexing queries, in time units, e.g. `10s`\n"
+                },
+                "loadFixedBitsetFiltersEagerly": {
+                    "type": "boolean",
+                    "description": "Indicates whether cached filters are pre-loaded for nested queries. This can be set only on creation.\n"
+                },
+                "mappings": {
+                    "type": "string",
+                    "description": "A JSON string defining how documents in the index, and the fields they contain, are stored and indexed. To avoid the\ncomplexities of field mapping updates, updates of this field are not allowed via this provider. See the upstream\n[Elasticsearch\ndocs](https://www.elastic.co/guide/en/elasticsearch/reference/6.8/indices-put-mapping.html#updating-field-mappings) for\nmore details.\n"
+                },
+                "maxDocvalueFieldsSearch": {
+                    "type": "string",
+                    "description": "The maximum number of `docvalue_fields` that are allowed in a query. A stringified number.\n"
+                },
+                "maxInnerResultWindow": {
+                    "type": "string",
+                    "description": "The maximum value of `from + size` for inner hits definition and top hits aggregations to this index. A stringified\nnumber.\n"
+                },
+                "maxNgramDiff": {
+                    "type": "string",
+                    "description": "The maximum allowed difference between min_gram and max_gram for NGramTokenizer and NGramTokenFilter. A stringified\nnumber.\n"
+                },
+                "maxRefreshListeners": {
+                    "type": "string",
+                    "description": "Maximum number of refresh listeners available on each shard of the index. A stringified number.\n"
+                },
+                "maxRegexLength": {
+                    "type": "string",
+                    "description": "The maximum length of regex that can be used in Regexp Query. A stringified number.\n"
+                },
+                "maxRescoreWindow": {
+                    "type": "string",
+                    "description": "The maximum value of `window_size` for `rescore` requests in searches of this index. A stringified number.\n"
+                },
+                "maxResultWindow": {
+                    "type": "string",
+                    "description": "The maximum value of `from + size` for searches to this index. A stringified number.\n"
+                },
+                "maxScriptFields": {
+                    "type": "string",
+                    "description": "The maximum number of `script_fields` that are allowed in a query. A stringified number.\n"
+                },
+                "maxShingleDiff": {
+                    "type": "string",
+                    "description": "The maximum allowed difference between max_shingle_size and min_shingle_size for ShingleTokenFilter. A stringified\nnumber.\n"
+                },
+                "maxTermsCount": {
+                    "type": "string",
+                    "description": "The maximum number of terms that can be used in Terms Query. A stringified number.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the index to create\n"
+                },
+                "numberOfReplicas": {
+                    "type": "string",
+                    "description": "Number of shard replicas. A stringified number.\n"
+                },
+                "numberOfRoutingShards": {
+                    "type": "string",
+                    "description": "Value used with number_of_shards to route documents to a primary shard. A stringified number. This can be set only on\ncreation.\n"
+                },
+                "numberOfShards": {
+                    "type": "string",
+                    "description": "Number of shards for the index. This can be set only on creation.\n"
+                },
+                "refreshInterval": {
+                    "type": "string",
+                    "description": "How often to perform a refresh operation, which makes recent changes to the index visible to search. Can be set to `-1`\nto disable refresh.\n"
+                },
+                "rolloverAlias": {
+                    "type": "string"
+                },
+                "routingAllocationEnable": {
+                    "type": "string",
+                    "description": "Controls shard allocation for this index. It can be set to: `all` , `primaries` , `new_primaries` , `none`.\n"
+                },
+                "routingPartitionSize": {
+                    "type": "string",
+                    "description": "The number of shards a custom routing value can go to. A stringified number. This can be set only on creation.\n"
+                },
+                "routingRebalanceEnable": {
+                    "type": "string",
+                    "description": "Enables shard rebalancing for this index. It can be set to: `all`, `primaries` , `replicas` , `none`.\n"
+                },
+                "searchIdleAfter": {
+                    "type": "string",
+                    "description": "How long a shard can not receive a search or get request until it’s considered search idle.\n"
+                },
+                "searchSlowlogLevel": {
+                    "type": "string",
+                    "description": "Set which logging level to use for the search slow log, can be: `warn`, `info`, `debug`, `trace`\n"
+                },
+                "searchSlowlogThresholdFetchDebug": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches in the fetch phase, in time units, e.g. `2s`\n"
+                },
+                "searchSlowlogThresholdFetchInfo": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches in the fetch phase, in time units, e.g. `5s`\n"
+                },
+                "searchSlowlogThresholdFetchTrace": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches in the fetch phase, in time units, e.g. `500ms`\n"
+                },
+                "searchSlowlogThresholdFetchWarn": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches in the fetch phase, in time units, e.g. `10s`\n"
+                },
+                "searchSlowlogThresholdQueryDebug": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `2s`\n"
+                },
+                "searchSlowlogThresholdQueryInfo": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `5s`\n"
+                },
+                "searchSlowlogThresholdQueryTrace": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `500ms`\n"
+                },
+                "searchSlowlogThresholdQueryWarn": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `10s`\n"
+                },
+                "shardCheckOnStartup": {
+                    "type": "string",
+                    "description": "Whether or not shards should be checked for corruption before opening. When corruption is detected, it will prevent the\nshard from being opened. Accepts `false`, `true`, `checksum`.\n"
+                },
+                "sortField": {
+                    "type": "string",
+                    "description": "The field to sort shards in this index by.\n"
+                },
+                "sortOrder": {
+                    "type": "string",
+                    "description": "The direction to sort shards in. Accepts `asc`, `desc`.\n"
+                }
+            },
+            "required": [
+                "name",
+                "numberOfShards",
+                "rolloverAlias"
+            ],
+            "inputProperties": {
+                "aliases": {
+                    "type": "string",
+                    "description": "A JSON string describing a set of aliases. The index aliases API allows aliasing an index with a name, with all APIs\nautomatically converting the alias name to the actual index name. An alias can also be mapped to more than one index,\nand when specifying it, the alias will automatically expand to the aliased indices.\n",
+                    "willReplaceOnChanges": true
+                },
+                "analysisAnalyzer": {
+                    "type": "string",
+                    "description": "A JSON string describing the analyzers applied to the index.\n",
+                    "willReplaceOnChanges": true
+                },
+                "analysisFilter": {
+                    "type": "string",
+                    "description": "A JSON string describing the filters applied to the index.\n",
+                    "willReplaceOnChanges": true
+                },
+                "analysisNormalizer": {
+                    "type": "string",
+                    "description": "A JSON string describing the normalizers applied to the index.\n",
+                    "willReplaceOnChanges": true
+                },
+                "analysisTokenizer": {
+                    "type": "string",
+                    "description": "A JSON string describing the tokenizers applied to the index.\n",
+                    "willReplaceOnChanges": true
+                },
+                "analyzeMaxTokenCount": {
+                    "type": "string",
+                    "description": "The maximum number of tokens that can be produced using _analyze API. A stringified number.\n"
+                },
+                "autoExpandReplicas": {
+                    "type": "string",
+                    "description": "Set the number of replicas to the node count in the cluster. Set to a dash delimited lower and upper bound (e.g. 0-5) or\nuse all for the upper bound (e.g. 0-all)\n"
+                },
+                "blocksMetadata": {
+                    "type": "boolean",
+                    "description": "Set to `true` to disable index metadata reads and writes.\n"
+                },
+                "blocksRead": {
+                    "type": "boolean",
+                    "description": "Set to `true` to disable read operations against the index.\n"
+                },
+                "blocksReadOnly": {
+                    "type": "boolean",
+                    "description": "Set to `true` to make the index and index metadata read only, `false` to allow writes and metadata changes.\n"
+                },
+                "blocksReadOnlyAllowDelete": {
+                    "type": "boolean",
+                    "description": "Identical to `index.blocks.read_only` but allows deleting the index to free up resources.\n"
+                },
+                "blocksWrite": {
+                    "type": "boolean",
+                    "description": "Set to `true` to disable data write operations against the index. This setting does not affect metadata.\n"
+                },
+                "codec": {
+                    "type": "string",
+                    "description": "The `default` value compresses stored data with LZ4 compression, but this can be set to `best_compression` which uses\nDEFLATE for a higher compression ratio. This can be set only on creation.\n",
+                    "willReplaceOnChanges": true
+                },
+                "defaultPipeline": {
+                    "type": "string",
+                    "description": "The default ingest node pipeline for this index. Index requests will fail if the default pipeline is set and the\npipeline does not exist.\n"
+                },
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "A boolean that indicates that the index should be deleted even if it contains documents.\n"
+                },
+                "gcDeletes": {
+                    "type": "string",
+                    "description": "The length of time that a deleted document's version number remains available for further versioned operations.\n"
+                },
+                "highlightMaxAnalyzedOffset": {
+                    "type": "string",
+                    "description": "The maximum number of characters that will be analyzed for a highlight request. A stringified number.\n"
+                },
+                "includeTypeName": {
+                    "type": "string",
+                    "description": "A string that indicates if and what we should pass to include_type_name parameter. Set to `\"false\"` when trying to\ncreate an index on a v6 cluster without a doc type or set to `\"true\"` when trying to create an index on a v7 cluster\nwith a doc type. Since mapping updates are not currently supported, this applies only on index create.\n"
+                },
+                "indexingSlowlogLevel": {
+                    "type": "string",
+                    "description": "Set which logging level to use for the search slow log, can be: `warn`, `info`, `debug`, `trace`\n"
+                },
+                "indexingSlowlogSource": {
+                    "type": "string",
+                    "description": "Set the number of characters of the `_source` to include in the slowlog lines, `false` or `0` will skip logging the\nsource entirely and setting it to `true` will log the entire source regardless of size. The original `_source` is\nreformatted by default to make sure that it fits on a single log line.\n"
+                },
+                "indexingSlowlogThresholdIndexDebug": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches for indexing queries, in time units, e.g. `2s`\n"
+                },
+                "indexingSlowlogThresholdIndexInfo": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches for indexing queries, in time units, e.g. `5s`\n"
+                },
+                "indexingSlowlogThresholdIndexTrace": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches for indexing queries, in time units, e.g. `500ms`\n"
+                },
+                "indexingSlowlogThresholdIndexWarn": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches for indexing queries, in time units, e.g. `10s`\n"
+                },
+                "loadFixedBitsetFiltersEagerly": {
+                    "type": "boolean",
+                    "description": "Indicates whether cached filters are pre-loaded for nested queries. This can be set only on creation.\n",
+                    "willReplaceOnChanges": true
+                },
+                "mappings": {
+                    "type": "string",
+                    "description": "A JSON string defining how documents in the index, and the fields they contain, are stored and indexed. To avoid the\ncomplexities of field mapping updates, updates of this field are not allowed via this provider. See the upstream\n[Elasticsearch\ndocs](https://www.elastic.co/guide/en/elasticsearch/reference/6.8/indices-put-mapping.html#updating-field-mappings) for\nmore details.\n",
+                    "willReplaceOnChanges": true
+                },
+                "maxDocvalueFieldsSearch": {
+                    "type": "string",
+                    "description": "The maximum number of `docvalue_fields` that are allowed in a query. A stringified number.\n"
+                },
+                "maxInnerResultWindow": {
+                    "type": "string",
+                    "description": "The maximum value of `from + size` for inner hits definition and top hits aggregations to this index. A stringified\nnumber.\n"
+                },
+                "maxNgramDiff": {
+                    "type": "string",
+                    "description": "The maximum allowed difference between min_gram and max_gram for NGramTokenizer and NGramTokenFilter. A stringified\nnumber.\n"
+                },
+                "maxRefreshListeners": {
+                    "type": "string",
+                    "description": "Maximum number of refresh listeners available on each shard of the index. A stringified number.\n"
+                },
+                "maxRegexLength": {
+                    "type": "string",
+                    "description": "The maximum length of regex that can be used in Regexp Query. A stringified number.\n"
+                },
+                "maxRescoreWindow": {
+                    "type": "string",
+                    "description": "The maximum value of `window_size` for `rescore` requests in searches of this index. A stringified number.\n"
+                },
+                "maxResultWindow": {
+                    "type": "string",
+                    "description": "The maximum value of `from + size` for searches to this index. A stringified number.\n"
+                },
+                "maxScriptFields": {
+                    "type": "string",
+                    "description": "The maximum number of `script_fields` that are allowed in a query. A stringified number.\n"
+                },
+                "maxShingleDiff": {
+                    "type": "string",
+                    "description": "The maximum allowed difference between max_shingle_size and min_shingle_size for ShingleTokenFilter. A stringified\nnumber.\n"
+                },
+                "maxTermsCount": {
+                    "type": "string",
+                    "description": "The maximum number of terms that can be used in Terms Query. A stringified number.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the index to create\n",
+                    "willReplaceOnChanges": true
+                },
+                "numberOfReplicas": {
+                    "type": "string",
+                    "description": "Number of shard replicas. A stringified number.\n"
+                },
+                "numberOfRoutingShards": {
+                    "type": "string",
+                    "description": "Value used with number_of_shards to route documents to a primary shard. A stringified number. This can be set only on\ncreation.\n",
+                    "willReplaceOnChanges": true
+                },
+                "numberOfShards": {
+                    "type": "string",
+                    "description": "Number of shards for the index. This can be set only on creation.\n",
+                    "willReplaceOnChanges": true
+                },
+                "refreshInterval": {
+                    "type": "string",
+                    "description": "How often to perform a refresh operation, which makes recent changes to the index visible to search. Can be set to `-1`\nto disable refresh.\n"
+                },
+                "rolloverAlias": {
+                    "type": "string"
+                },
+                "routingAllocationEnable": {
+                    "type": "string",
+                    "description": "Controls shard allocation for this index. It can be set to: `all` , `primaries` , `new_primaries` , `none`.\n"
+                },
+                "routingPartitionSize": {
+                    "type": "string",
+                    "description": "The number of shards a custom routing value can go to. A stringified number. This can be set only on creation.\n",
+                    "willReplaceOnChanges": true
+                },
+                "routingRebalanceEnable": {
+                    "type": "string",
+                    "description": "Enables shard rebalancing for this index. It can be set to: `all`, `primaries` , `replicas` , `none`.\n"
+                },
+                "searchIdleAfter": {
+                    "type": "string",
+                    "description": "How long a shard can not receive a search or get request until it’s considered search idle.\n"
+                },
+                "searchSlowlogLevel": {
+                    "type": "string",
+                    "description": "Set which logging level to use for the search slow log, can be: `warn`, `info`, `debug`, `trace`\n"
+                },
+                "searchSlowlogThresholdFetchDebug": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches in the fetch phase, in time units, e.g. `2s`\n"
+                },
+                "searchSlowlogThresholdFetchInfo": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches in the fetch phase, in time units, e.g. `5s`\n"
+                },
+                "searchSlowlogThresholdFetchTrace": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches in the fetch phase, in time units, e.g. `500ms`\n"
+                },
+                "searchSlowlogThresholdFetchWarn": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches in the fetch phase, in time units, e.g. `10s`\n"
+                },
+                "searchSlowlogThresholdQueryDebug": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `2s`\n"
+                },
+                "searchSlowlogThresholdQueryInfo": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `5s`\n"
+                },
+                "searchSlowlogThresholdQueryTrace": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `500ms`\n"
+                },
+                "searchSlowlogThresholdQueryWarn": {
+                    "type": "string",
+                    "description": "Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `10s`\n"
+                },
+                "shardCheckOnStartup": {
+                    "type": "string",
+                    "description": "Whether or not shards should be checked for corruption before opening. When corruption is detected, it will prevent the\nshard from being opened. Accepts `false`, `true`, `checksum`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "sortField": {
+                    "type": "string",
+                    "description": "The field to sort shards in this index by.\n",
+                    "willReplaceOnChanges": true
+                },
+                "sortOrder": {
+                    "type": "string",
+                    "description": "The direction to sort shards in. Accepts `asc`, `desc`.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Index resources.\n",
+                "properties": {
+                    "aliases": {
+                        "type": "string",
+                        "description": "A JSON string describing a set of aliases. The index aliases API allows aliasing an index with a name, with all APIs\nautomatically converting the alias name to the actual index name. An alias can also be mapped to more than one index,\nand when specifying it, the alias will automatically expand to the aliased indices.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "analysisAnalyzer": {
+                        "type": "string",
+                        "description": "A JSON string describing the analyzers applied to the index.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "analysisFilter": {
+                        "type": "string",
+                        "description": "A JSON string describing the filters applied to the index.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "analysisNormalizer": {
+                        "type": "string",
+                        "description": "A JSON string describing the normalizers applied to the index.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "analysisTokenizer": {
+                        "type": "string",
+                        "description": "A JSON string describing the tokenizers applied to the index.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "analyzeMaxTokenCount": {
+                        "type": "string",
+                        "description": "The maximum number of tokens that can be produced using _analyze API. A stringified number.\n"
+                    },
+                    "autoExpandReplicas": {
+                        "type": "string",
+                        "description": "Set the number of replicas to the node count in the cluster. Set to a dash delimited lower and upper bound (e.g. 0-5) or\nuse all for the upper bound (e.g. 0-all)\n"
+                    },
+                    "blocksMetadata": {
+                        "type": "boolean",
+                        "description": "Set to `true` to disable index metadata reads and writes.\n"
+                    },
+                    "blocksRead": {
+                        "type": "boolean",
+                        "description": "Set to `true` to disable read operations against the index.\n"
+                    },
+                    "blocksReadOnly": {
+                        "type": "boolean",
+                        "description": "Set to `true` to make the index and index metadata read only, `false` to allow writes and metadata changes.\n"
+                    },
+                    "blocksReadOnlyAllowDelete": {
+                        "type": "boolean",
+                        "description": "Identical to `index.blocks.read_only` but allows deleting the index to free up resources.\n"
+                    },
+                    "blocksWrite": {
+                        "type": "boolean",
+                        "description": "Set to `true` to disable data write operations against the index. This setting does not affect metadata.\n"
+                    },
+                    "codec": {
+                        "type": "string",
+                        "description": "The `default` value compresses stored data with LZ4 compression, but this can be set to `best_compression` which uses\nDEFLATE for a higher compression ratio. This can be set only on creation.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "defaultPipeline": {
+                        "type": "string",
+                        "description": "The default ingest node pipeline for this index. Index requests will fail if the default pipeline is set and the\npipeline does not exist.\n"
+                    },
+                    "forceDestroy": {
+                        "type": "boolean",
+                        "description": "A boolean that indicates that the index should be deleted even if it contains documents.\n"
+                    },
+                    "gcDeletes": {
+                        "type": "string",
+                        "description": "The length of time that a deleted document's version number remains available for further versioned operations.\n"
+                    },
+                    "highlightMaxAnalyzedOffset": {
+                        "type": "string",
+                        "description": "The maximum number of characters that will be analyzed for a highlight request. A stringified number.\n"
+                    },
+                    "includeTypeName": {
+                        "type": "string",
+                        "description": "A string that indicates if and what we should pass to include_type_name parameter. Set to `\"false\"` when trying to\ncreate an index on a v6 cluster without a doc type or set to `\"true\"` when trying to create an index on a v7 cluster\nwith a doc type. Since mapping updates are not currently supported, this applies only on index create.\n"
+                    },
+                    "indexingSlowlogLevel": {
+                        "type": "string",
+                        "description": "Set which logging level to use for the search slow log, can be: `warn`, `info`, `debug`, `trace`\n"
+                    },
+                    "indexingSlowlogSource": {
+                        "type": "string",
+                        "description": "Set the number of characters of the `_source` to include in the slowlog lines, `false` or `0` will skip logging the\nsource entirely and setting it to `true` will log the entire source regardless of size. The original `_source` is\nreformatted by default to make sure that it fits on a single log line.\n"
+                    },
+                    "indexingSlowlogThresholdIndexDebug": {
+                        "type": "string",
+                        "description": "Set the cutoff for shard level slow search logging of slow searches for indexing queries, in time units, e.g. `2s`\n"
+                    },
+                    "indexingSlowlogThresholdIndexInfo": {
+                        "type": "string",
+                        "description": "Set the cutoff for shard level slow search logging of slow searches for indexing queries, in time units, e.g. `5s`\n"
+                    },
+                    "indexingSlowlogThresholdIndexTrace": {
+                        "type": "string",
+                        "description": "Set the cutoff for shard level slow search logging of slow searches for indexing queries, in time units, e.g. `500ms`\n"
+                    },
+                    "indexingSlowlogThresholdIndexWarn": {
+                        "type": "string",
+                        "description": "Set the cutoff for shard level slow search logging of slow searches for indexing queries, in time units, e.g. `10s`\n"
+                    },
+                    "loadFixedBitsetFiltersEagerly": {
+                        "type": "boolean",
+                        "description": "Indicates whether cached filters are pre-loaded for nested queries. This can be set only on creation.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "mappings": {
+                        "type": "string",
+                        "description": "A JSON string defining how documents in the index, and the fields they contain, are stored and indexed. To avoid the\ncomplexities of field mapping updates, updates of this field are not allowed via this provider. See the upstream\n[Elasticsearch\ndocs](https://www.elastic.co/guide/en/elasticsearch/reference/6.8/indices-put-mapping.html#updating-field-mappings) for\nmore details.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "maxDocvalueFieldsSearch": {
+                        "type": "string",
+                        "description": "The maximum number of `docvalue_fields` that are allowed in a query. A stringified number.\n"
+                    },
+                    "maxInnerResultWindow": {
+                        "type": "string",
+                        "description": "The maximum value of `from + size` for inner hits definition and top hits aggregations to this index. A stringified\nnumber.\n"
+                    },
+                    "maxNgramDiff": {
+                        "type": "string",
+                        "description": "The maximum allowed difference between min_gram and max_gram for NGramTokenizer and NGramTokenFilter. A stringified\nnumber.\n"
+                    },
+                    "maxRefreshListeners": {
+                        "type": "string",
+                        "description": "Maximum number of refresh listeners available on each shard of the index. A stringified number.\n"
+                    },
+                    "maxRegexLength": {
+                        "type": "string",
+                        "description": "The maximum length of regex that can be used in Regexp Query. A stringified number.\n"
+                    },
+                    "maxRescoreWindow": {
+                        "type": "string",
+                        "description": "The maximum value of `window_size` for `rescore` requests in searches of this index. A stringified number.\n"
+                    },
+                    "maxResultWindow": {
+                        "type": "string",
+                        "description": "The maximum value of `from + size` for searches to this index. A stringified number.\n"
+                    },
+                    "maxScriptFields": {
+                        "type": "string",
+                        "description": "The maximum number of `script_fields` that are allowed in a query. A stringified number.\n"
+                    },
+                    "maxShingleDiff": {
+                        "type": "string",
+                        "description": "The maximum allowed difference between max_shingle_size and min_shingle_size for ShingleTokenFilter. A stringified\nnumber.\n"
+                    },
+                    "maxTermsCount": {
+                        "type": "string",
+                        "description": "The maximum number of terms that can be used in Terms Query. A stringified number.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the index to create\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "numberOfReplicas": {
+                        "type": "string",
+                        "description": "Number of shard replicas. A stringified number.\n"
+                    },
+                    "numberOfRoutingShards": {
+                        "type": "string",
+                        "description": "Value used with number_of_shards to route documents to a primary shard. A stringified number. This can be set only on\ncreation.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "numberOfShards": {
+                        "type": "string",
+                        "description": "Number of shards for the index. This can be set only on creation.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "refreshInterval": {
+                        "type": "string",
+                        "description": "How often to perform a refresh operation, which makes recent changes to the index visible to search. Can be set to `-1`\nto disable refresh.\n"
+                    },
+                    "rolloverAlias": {
+                        "type": "string"
+                    },
+                    "routingAllocationEnable": {
+                        "type": "string",
+                        "description": "Controls shard allocation for this index. It can be set to: `all` , `primaries` , `new_primaries` , `none`.\n"
+                    },
+                    "routingPartitionSize": {
+                        "type": "string",
+                        "description": "The number of shards a custom routing value can go to. A stringified number. This can be set only on creation.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "routingRebalanceEnable": {
+                        "type": "string",
+                        "description": "Enables shard rebalancing for this index. It can be set to: `all`, `primaries` , `replicas` , `none`.\n"
+                    },
+                    "searchIdleAfter": {
+                        "type": "string",
+                        "description": "How long a shard can not receive a search or get request until it’s considered search idle.\n"
+                    },
+                    "searchSlowlogLevel": {
+                        "type": "string",
+                        "description": "Set which logging level to use for the search slow log, can be: `warn`, `info`, `debug`, `trace`\n"
+                    },
+                    "searchSlowlogThresholdFetchDebug": {
+                        "type": "string",
+                        "description": "Set the cutoff for shard level slow search logging of slow searches in the fetch phase, in time units, e.g. `2s`\n"
+                    },
+                    "searchSlowlogThresholdFetchInfo": {
+                        "type": "string",
+                        "description": "Set the cutoff for shard level slow search logging of slow searches in the fetch phase, in time units, e.g. `5s`\n"
+                    },
+                    "searchSlowlogThresholdFetchTrace": {
+                        "type": "string",
+                        "description": "Set the cutoff for shard level slow search logging of slow searches in the fetch phase, in time units, e.g. `500ms`\n"
+                    },
+                    "searchSlowlogThresholdFetchWarn": {
+                        "type": "string",
+                        "description": "Set the cutoff for shard level slow search logging of slow searches in the fetch phase, in time units, e.g. `10s`\n"
+                    },
+                    "searchSlowlogThresholdQueryDebug": {
+                        "type": "string",
+                        "description": "Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `2s`\n"
+                    },
+                    "searchSlowlogThresholdQueryInfo": {
+                        "type": "string",
+                        "description": "Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `5s`\n"
+                    },
+                    "searchSlowlogThresholdQueryTrace": {
+                        "type": "string",
+                        "description": "Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `500ms`\n"
+                    },
+                    "searchSlowlogThresholdQueryWarn": {
+                        "type": "string",
+                        "description": "Set the cutoff for shard level slow search logging of slow searches in the query phase, in time units, e.g. `10s`\n"
+                    },
+                    "shardCheckOnStartup": {
+                        "type": "string",
+                        "description": "Whether or not shards should be checked for corruption before opening. When corruption is detected, it will prevent the\nshard from being opened. Accepts `false`, `true`, `checksum`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "sortField": {
+                        "type": "string",
+                        "description": "The field to sort shards in this index by.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "sortOrder": {
+                        "type": "string",
+                        "description": "The direction to sort shards in. Accepts `asc`, `desc`.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
