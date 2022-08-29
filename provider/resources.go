@@ -18,12 +18,12 @@ import (
 	"fmt"
 	"path/filepath"
 
+	"github.com/OKO-press/pulumi-elasticsearch/provider/pkg/version"
+	elasticsearch "github.com/OKO-press/terraform-provider-elasticsearch/v2/es"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/OKO-press/pulumi-elasticsearch/provider/pkg/version"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	elasticsearch "github.com/OKO-press/terraform-provider-elasticsearch/v2/es"
 )
 
 // all of the token components used below.
@@ -80,13 +80,18 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/OKO-press/pulumi-elasticsearch",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "OKO-press",
-		Config:    map[string]*tfbridge.SchemaInfo{
-		},
+		GitHubOrg:            "OKO-press",
+		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
+		Resources: map[string]*tfbridge.ResourceInfo{
 			"elasticsearch_index": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Index"),
+			},
+			"elasticsearch_opensearch_role": {
+				Tok: tfbridge.MakeResource(mainPkg, "opensearch", "Role"),
+			},
+			"elasticsearch_opensearch_roles_mapping": {
+				Tok: tfbridge.MakeResource(mainPkg, "opensearch", "RolesMapping"),
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{

@@ -151,6 +151,92 @@
             "url"
         ]
     },
+    "types": {
+        "elasticsearch:opensearch/RoleIndexPermission:RoleIndexPermission": {
+            "properties": {
+                "allowedActions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "documentLevelSecurity": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fieldLevelSecurities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "indexPatterns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maskedFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "elasticsearch:opensearch/RoleTenantPermission:RoleTenantPermission": {
+            "properties": {
+                "allowedActions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tenantPatterns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        }
+    },
     "provider": {
         "description": "The provider type for the elasticsearch package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
         "properties": {
@@ -1084,6 +1170,208 @@
                         "type": "string",
                         "description": "The direction to sort shards in. Accepts `asc`, `desc`.\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "elasticsearch:opensearch/role:Role": {
+            "properties": {
+                "clusterPermissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "indexPermissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/elasticsearch:opensearch/RoleIndexPermission:RoleIndexPermission"
+                    }
+                },
+                "roleName": {
+                    "type": "string"
+                },
+                "tenantPermissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/elasticsearch:opensearch/RoleTenantPermission:RoleTenantPermission"
+                    }
+                }
+            },
+            "required": [
+                "roleName"
+            ],
+            "inputProperties": {
+                "clusterPermissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "indexPermissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/elasticsearch:opensearch/RoleIndexPermission:RoleIndexPermission"
+                    }
+                },
+                "roleName": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "tenantPermissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/elasticsearch:opensearch/RoleTenantPermission:RoleTenantPermission"
+                    }
+                }
+            },
+            "requiredInputs": [
+                "roleName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Role resources.\n",
+                "properties": {
+                    "clusterPermissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "indexPermissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/elasticsearch:opensearch/RoleIndexPermission:RoleIndexPermission"
+                        }
+                    },
+                    "roleName": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "tenantPermissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/elasticsearch:opensearch/RoleTenantPermission:RoleTenantPermission"
+                        }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "elasticsearch:opensearch/rolesMapping:RolesMapping": {
+            "properties": {
+                "andBackendRoles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "backendRoles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "roleName": {
+                    "type": "string"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "roleName"
+            ],
+            "inputProperties": {
+                "andBackendRoles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "backendRoles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "roleName": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "requiredInputs": [
+                "roleName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RolesMapping resources.\n",
+                "properties": {
+                    "andBackendRoles": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "backendRoles": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "hosts": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "roleName": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "type": "object"

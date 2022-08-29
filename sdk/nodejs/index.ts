@@ -10,9 +10,13 @@ export * from "./provider";
 
 // Export sub-modules:
 import * as config from "./config";
+import * as opensearch from "./opensearch";
+import * as types from "./types";
 
 export {
     config,
+    opensearch,
+    types,
 };
 
 // Import resources to register:

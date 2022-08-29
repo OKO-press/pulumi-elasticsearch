@@ -17,7 +17,13 @@
         "config/vars.ts",
         "index.ts",
         "index_.ts",
+        "opensearch/index.ts",
+        "opensearch/role.ts",
+        "opensearch/rolesMapping.ts",
         "provider.ts",
+        "types/index.ts",
+        "types/input.ts",
+        "types/output.ts",
         "utilities.ts"
     ]
 }
