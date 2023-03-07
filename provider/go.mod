@@ -31,7 +31,7 @@ require (
 	github.com/Azure/go-autorest/autorest/validation v0.3.1 // indirect
 	github.com/Azure/go-autorest/logger v0.2.1 // indirect
 	github.com/Azure/go-autorest/tracing v0.6.0 // indirect
-	github.com/Masterminds/goutils v1.1.0 // indirect
+	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver v1.5.0 // indirect
 	github.com/Masterminds/sprig v2.22.0+incompatible // indirect
 	github.com/Microsoft/go-winio v0.5.2 // indirect
@@ -106,14 +106,11 @@ require (
 	github.com/hashicorp/hcl/v2 v2.13.0 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
-	github.com/hashicorp/terraform-config-inspect v0.0.0-20191115094559-17f92b0546e8 // indirect
 	github.com/hashicorp/terraform-exec v0.17.2 // indirect
 	github.com/hashicorp/terraform-json v0.14.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.14.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.7.0 // indirect
-	github.com/hashicorp/terraform-plugin-sdk v1.13.1 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.19.0 // indirect
-	github.com/hashicorp/terraform-plugin-test v1.3.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.0.0-20220623143253-7d51757b572c // indirect
 	github.com/hashicorp/terraform-svchost v0.0.0-20200729002733-f050f53b9734 // indirect
 	github.com/hashicorp/vault/api v1.1.1 // indirect
@@ -138,7 +135,6 @@ require (
 	github.com/mattn/go-runewidth v0.0.13 // indirect
 	github.com/mgutz/ansi v0.0.0-20170206155736-9520e82c474b // indirect
 	github.com/mitchellh/cli v1.1.2 // indirect
-	github.com/mitchellh/colorstring v0.0.0-20190213212951-d06e56a500db // indirect
 	github.com/mitchellh/copystructure v1.2.0 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/go-ps v1.0.0 // indirect
@@ -195,7 +191,6 @@ require (
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
 	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
 	github.com/zclconf/go-cty v1.10.0 // indirect
-	github.com/zclconf/go-cty-yaml v1.0.1 // indirect
 	go.opencensus.io v0.23.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	gocloud.dev v0.24.0 // indirect
@@ -216,7 +211,6 @@ require (
 	google.golang.org/grpc v1.48.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/AlecAivazis/survey.v1 v1.8.9-0.20200217094205-6773bdf39b7f // indirect
-	gopkg.in/olivere/elastic.v5 v5.0.85 // indirect
 	gopkg.in/olivere/elastic.v6 v6.2.37 // indirect
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
